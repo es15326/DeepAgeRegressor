@@ -81,7 +81,7 @@ Works out-of-the-box with:
 Start training with any supported architecture:
 
 ```bash
-python main.py --config config/resnet.yaml
+python train.py --config config/resnet.yaml
 ```
 
 Use YAML to configure backbone, batch size, epochs, learning rate, and loss.
@@ -93,7 +93,7 @@ Use YAML to configure backbone, batch size, epochs, learning rate, and loss.
 Evaluate model performance on a test set:
 
 ```bash
-python eval.py --checkpoint runs/model_best.pt --csv data/test.csv
+python validation.py --checkpoint runs/model_best.pt --csv data/test.csv
 ```
 
 ---
