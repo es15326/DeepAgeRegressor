@@ -161,3 +161,29 @@ MIT License. See `LICENSE` for more details.
   Built with 💙 for impactful AI research.
 </p>
 
+---
+
+## 🧪 Synthetic Data for Minor Age Groups
+
+To address data scarcity in younger age brackets, we incorporated **LLM-guided diffusion-based synthetic images** for children (particularly ages 1–5). These samples were generated using Stable Diffusion conditioned on LLM-generated prompts for realistic age-specific variation.
+
+### 👶 Synthetic Data Highlights
+- 13,558 synthetic images of 1–5-year-olds
+- Diverse ethnicities, lighting conditions, and facial expressions
+- Generated using prompts via ChatGPT + Stable Diffusion (v1.5)
+
+### 📈 Impact on Model Performance
+
+| Model         | Dataset            | Age Range | MAE ↓   | Notes                           |
+|---------------|--------------------|-----------|---------|---------------------------------|
+| ResNeXt-50    | Real Only          | 1–5       | 2.14    | Baseline on real data only      |
+| ResNeXt-50    | + Synthetic (LLM)  | 1–5       | 1.06    | With LLM-based synthetic boost  |
+| ViT-B/16      | + Synthetic (LLM)  | 1–5       | 1.22    | Transformer performance improved|
+
+> ✅ The inclusion of synthetic data halved the MAE for the 1–5 age group.
+
+This demonstrates the **value of synthetic data generation** for age ranges underrepresented in real datasets.
+
+---
+
+
