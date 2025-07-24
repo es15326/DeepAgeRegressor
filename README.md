@@ -90,12 +90,26 @@ Use YAML to configure backbone, batch size, epochs, learning rate, and loss.
 
 ## 📊 Evaluation
 
-Evaluate model performance on a test set:
+To evaluate a trained model, use the `eval.py` script. You must specify the model's class name and the path to its checkpoint file.
+
+### General Usage
 
 ```bash
-python validation.py --checkpoint runs/model_best.pt --csv data/test.csv
+python eval.py \
+    --model_name <MODEL_CLASS_NAME> \
+    --checkpoint_path <PATH_TO_YOUR_MODEL.ckpt> \
+    --test_csv <PATH_TO_TEST_DATA.csv> \
+    --img_path <PATH_TO_TEST_IMAGES> \
+    --batch_size <BATCH_SIZE> \
+    --num_workers <NUM_WORKERS>
+
 ```
 
+```bash
+python eval.py \
+    --model_name ResNext \
+    --checkpoint_path data/checkpoints/WAAR-Loss-ResNext-synthetic-data-epoch=047-val_aar=8.05.ckpt
+```
 ---
 
 ## 📈 Example Results
