@@ -1,7 +1,7 @@
 
 <!-- Banner -->
 <p align="center">
-  <img src="banner.png" alt="DeepAgeReg Banner" width="50%">
+  <img src="banner.png" alt="DeepAgeReg Banner" width="80%">
 </p>
 
 
