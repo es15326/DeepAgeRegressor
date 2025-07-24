@@ -1,8 +1,9 @@
 
 <!-- Banner -->
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/placeholder/banner.png" alt="DeepAgeRegressor" width="70%">
+  <img src="banner.png" alt="DeepAgeReg Banner" width="80%">
 </p>
+
 
 <h1 align="center">DeepAgeRegressor</h1>
 
