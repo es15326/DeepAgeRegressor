@@ -1,35 +1,34 @@
 
 <!-- Banner -->
 <p align="center">
-  <img src="banner.png" alt="DeepAgeReg Banner" width="100%">
+  <img src="banner.png" alt="DeepAgeRegressor Banner" width="100%">
 </p>
 
-
-<h1 align="center">DeepAgeRegressor</h1>
+<h1 align="center">🧬 DeepAgeRegressor</h1>
 
 <p align="center">
-  <b>Deep Learning-Based Facial Age Estimation</b><br>
-  Regression models built with PyTorch to predict age from facial images.<br>
-  <em>Designed with clarity, reproducibility, and research in mind.</em>
+  <strong>Deep Learning for Human Age Estimation from Facial Images</strong><br>
+  <em>Modular • Scalable • Research-Ready</em><br>
+  <sub>Optimized for AI research, fairness studies, and real-world applications.</sub>
 </p>
 
 ---
 
 ## 🚀 Overview
 
-**DeepAgeRegressor** is a modular and scalable framework for predicting human age from facial images using deep neural networks. Unlike probabilistic or classification-based approaches, this repository focuses on **direct scalar regression**, employing powerful architectures such as ResNet, ResNeXt, and Vision Transformers.
+**DeepAgeRegressor** is a flexible and high-performance framework for **facial age prediction using direct regression**. Built on top of PyTorch, it supports multiple state-of-the-art backbones like **ResNeXt** and **Vision Transformers**, with full YAML configuration, custom loss functions, and support for LLM-generated synthetic datasets.
 
-It’s optimized for academic reproducibility and built to support experimentation for researchers and students aiming for real-world impact — ideal for applied AI research.
+> 🎯 Designed for fast experimentation and scientific rigor, making it ideal for academic research, fair-AI benchmarking, and applied computer vision studies.
 
 ---
 
-## 🧠 Model Architectures
+## 🧠 Supported Models
 
-| Model          | Architecture         | Output       | Loss Functions             |
-|----------------|----------------------|--------------|----------------------------|
-| `ResNetAgeModel` | ResNet-50            | Continuous   | MSE, Weighted MSE          |
-| `ResNext`        | ResNeXt-50 (32x4d)   | Continuous   | Soft-AAR, Weighted MSE     |
-| `ViTAgeModel`    | ViT-B/16 Transformer | Continuous   | MSE                        |
+| Model          | Architecture         | Output       | Loss Functions                 |
+|----------------|----------------------|--------------|--------------------------------|
+| `ResNetAgeModel` | ResNet-50            | Continuous   | MSE, Weighted MSE              |
+| `ResNext`        | ResNeXt-50 (32x4d)   | Continuous   | Soft-AAR, Weighted MSE         |
+| `ViTAgeModel`    | ViT-B/16 Transformer | Continuous   | MSE                            |
 
 ---
 
@@ -37,21 +36,19 @@ It’s optimized for academic reproducibility and built to support experimentati
 
 ```bash
 deepage-regressor/
-├── config/                 # YAML training configurations
-├── data/                   # Dataset loading and transformation
-├── nets/                 # Model definitions (ResNet, ResNeXt, ViT)
-├── loss/                   # Custom loss functions (Soft-AAR, Weighted MSE)
-├── trainer/                # Training and validation loop
-├── eval.py                 # Evaluation and inference
-├── train.py                 # Training entry point
+├── config/           # YAML configs for training
+├── data/             # Dataset preprocessing
+├── nets/             # Models: ResNet, ResNeXt, ViT
+├── loss/             # Custom loss implementations
+├── trainer/          # Training loop and scheduler
+├── train.py          # CLI training entry point
+├── eval.py           # Evaluation/inference script
 └── README.md
 ```
 
 ---
 
-## 📦 Installation
-
-Install the required Python packages:
+## ⚙️ Installation
 
 ```bash
 pip install -r requirements.txt
@@ -59,80 +56,89 @@ pip install -r requirements.txt
 
 ---
 
-## 📂 Dataset Format
+## 🧃 Dataset Format
 
-Provide a CSV file with image paths and age labels:
+CSV structure:
 
 ```csv
 image_path,age
-images/subject1.jpg,23
-images/subject2.jpg,45
+images/img_001.jpg,23
+images/img_002.jpg,45
 ```
 
-Works out-of-the-box with:
-- UTKFace
-- FG-NET (with preprocessing)
-- Custom datasets in similar format
+Supports:
+- ✅ UTKFace (out of the box)
+- ✅ FG-NET (with preprocessing)
+- ✅ Custom datasets in same format
 
 ---
 
 ## 🧪 Training
 
-Start training with any supported architecture:
-
 ```bash
 python train.py --config config/resnet.yaml
 ```
 
-Use YAML to configure backbone, batch size, epochs, learning rate, and loss.
+Configurable options: model type, learning rate, batch size, optimizer, epochs, and loss function.
 
 ---
 
 ## 📊 Evaluation
 
-To evaluate a trained model, use the `eval.py` script. You must specify the model's class name and the path to its checkpoint file.
-
-### General Usage
-
 ```bash
 python eval.py \
-    --model_name <MODEL_CLASS_NAME> \
-    --checkpoint_path <PATH_TO_YOUR_MODEL.ckpt> \
-    --test_csv <PATH_TO_TEST_DATA.csv> \
-    --img_path <PATH_TO_TEST_IMAGES> \
-    --batch_size <BATCH_SIZE> \
-    --num_workers <NUM_WORKERS>
-
+  --model_name ResNext \
+  --checkpoint_path checkpoints/WAAR-epoch=047.ckpt \
+  --test_csv data/test.csv \
+  --img_path data/images \
+  --batch_size 64 \
+  --num_workers 4
 ```
 
-```bash
-python eval.py \
-    --model_name ResNext \
-    --checkpoint_path data/checkpoints/WAAR-Loss-ResNext-synthetic-data-epoch=047-val_aar=8.05.ckpt
-```
 ---
 
-## 📈 Example Results
+## 📈 Results (Real-World Benchmarks)
 
-| Model     | MAE ↓  | Notes                            |
-|-----------|--------|----------------------------------|
-| ResNet-50 | 1.36   | Standard MSE loss                |
-| ResNeXt-50| 0.74   | Weighted MSE + Augmentation      |
-| ViT-B/16  | 1.28   | Vision Transformer + MSE         |
+| Model        | MAE ↓ | Highlights                            |
+|--------------|-------|----------------------------------------|
+| ResNet-50    | 1.36  | Baseline using MSE                    |
+| ViT-B/16     | 1.28  | Transformer-based, slight boost       |
+| ResNeXt-50   | **0.74**  | Best: Augmentation + Soft-AAR loss     |
 
-> ✅ Best performance achieved using ResNeXt with augmentation and soft AAR loss.
+> ✅ **Lowest MAE** achieved using ResNeXt-50 with **LLM-assisted synthetic augmentation**.
 
 ---
 
-## 🧮 Loss Functions
+## 🧮 Custom Loss Functions
 
-- **MSE**: Standard Mean Squared Error
-- **Weighted MSE**: Emphasizes difficult age ranges
-- **Soft-AAR**: Custom loss based on Age-Aware Reliability
+- **MSE**: Standard Mean Squared Error  
+- **Weighted MSE**: Increases penalty on underrepresented age ranges  
+- **Soft-AAR**: Age-Aware Reliability loss that balances accuracy and uncertainty
 
 ---
 
-## 🛠️ Example Configuration
+## 🧪 Synthetic Data Generation (LLM + Diffusion)
+
+To improve model robustness on **low-sample age groups (1–5 years)**, we used **LLM-guided Stable Diffusion** to generate synthetic facial images, based on prompts generated by ChatGPT.
+
+### 📸 Synthetic Highlights
+- **13,558** high-quality synthetic samples
+- Representing diverse ethnicity, expressions, and lighting
+- Generated with *Stable Diffusion v1.5* + *LLM prompt design*
+
+### 📉 Performance Boost
+
+| Model        | Dataset             | Age Group | MAE ↓ | Notes                              |
+|--------------|---------------------|-----------|-------|-------------------------------------|
+| ResNeXt-50   | Real Only           | 1–5       | 2.14  | High error on low-sample group     |
+| ResNeXt-50   | + LLM Synthetic     | 1–5       | 1.06  | 50% error reduction                 |
+| ViT-B/16     | + LLM Synthetic     | 1–5       | 1.22  | Improved generalization            |
+
+> 🚀 *Synthetic augmentation dramatically boosts performance for young age prediction.*
+
+---
+
+## 🧰 Sample YAML Configuration
 
 ```yaml
 model:
@@ -150,55 +156,29 @@ loss:
 
 ---
 
-## 🧪 Synthetic Data for Minor Age Groups
+## 🎯 Project Goals
 
-To address data scarcity in younger age brackets, we incorporated **LLM-guided diffusion-based synthetic images** for children (particularly ages 1–5). These samples were generated using Stable Diffusion conditioned on LLM-generated prompts for realistic age-specific variation.
-
-### 👶 Synthetic Data Highlights
-- 13,558 synthetic images of 1–5-year-olds
-- Diverse ethnicities, lighting conditions, and facial expressions
-- Generated using prompts via ChatGPT + Stable Diffusion (v1.5)
-
-### 📈 Impact on Model Performance
-
-| Model         | Dataset            | Age Range | MAE ↓   | Notes                           |
-|---------------|--------------------|-----------|---------|---------------------------------|
-| ResNeXt-50    | Real Only          | 1–5       | 2.14    | Baseline on real data only      |
-| ResNeXt-50    | + Synthetic (LLM)  | 1–5       | 1.06    | With LLM-based synthetic boost  |
-| ViT-B/16      | + Synthetic (LLM)  | 1–5       | 1.22    | Transformer performance improved|
-
-> ✅ The inclusion of synthetic data halved the MAE for the 1–5 age group.
-
-This demonstrates the **value of synthetic data generation** for age ranges underrepresented in real datasets.
-
+- 🔬 Promote reproducible facial age estimation research
+- 🧪 Encourage exploration of synthetic data techniques
+- 🧱 Provide a clean, extendable PyTorch baseline
+- 👩‍💻 Built for researchers, interns, and students
 
 ---
 
-## 🎯 Goals
+## 💬 Contact
 
-- ✅ Fast experimentation for academic research
-- ✅ Easy integration of new models and losses
-- ✅ High-quality baseline for facial age regression
-
----
-
-## 📬 Contact
-
-**Elham Soltani Kazemi**
-📫 [your.email@domain.com]
+**Elham Soltani Kazemi**  
+📧 [your.email@domain.com]  
 🔗 [LinkedIn](https://linkedin.com/in/your-profile)
 
 ---
 
 ## 📄 License
 
-MIT License. See `LICENSE` for more details.
+Released under the MIT License. See `LICENSE` for details.
 
 ---
 
 <p align="center">
-  Built with 💙 for impactful AI research.
+  Made with 💙 for trustworthy, impactful AI research.
 </p>
-
----
-
