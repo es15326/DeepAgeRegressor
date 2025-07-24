@@ -1,0 +1,13 @@
+model:
+  name: 'ViTAgeModel'
+
+training:
+  batch_size: 128
+
+logging:
+  project_name: 'GTA-VIT-Aligned'
+
+checkpoint:
+  monitor: 'val_arr'
+  filename: 'Aligned-VIT-{epoch:03d}-{val_arr:.2f}'
+  mode: 'max'

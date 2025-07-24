@@ -1,0 +1,13 @@
+model:
+  name: 'ResNetAgeModel'
+
+training:
+  batch_size: 128
+
+logging:
+  project_name: 'GTA-MSE-ResNet'
+
+checkpoint:
+  monitor: 'val_aar'
+  filename: 'MSE-Loss-ResNet-{epoch:03d}-{val_aar:.2f}'
+  mode: 'max'

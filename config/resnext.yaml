@@ -1,0 +1,16 @@
+model:
+  name: 'ResNext'
+
+training:
+  batch_size: 256
+
+loss:
+  name: 'WeightedAARLoss'
+
+logging:
+  project_name: 'GTA-WAAR-ResNext'
+
+checkpoint:
+  monitor: 'val_aar'
+  filename: 'WAAR-Loss-ResNext-{epoch:03d}-{val_aar:.2f}'
+  mode: 'max'
