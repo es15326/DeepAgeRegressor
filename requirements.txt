@@ -1,0 +1,11 @@
+torch>=1.13
+torchvision
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+opencv-python
+scikit-learn
+PyYAML
+
