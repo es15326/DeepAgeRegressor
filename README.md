@@ -19,7 +19,7 @@
 
 **DeepAgeRegressor** is a modular and scalable framework for predicting human age from facial images using deep neural networks. Unlike probabilistic or classification-based approaches, this repository focuses on **direct scalar regression**, employing powerful architectures such as ResNet, ResNeXt, and Vision Transformers.
 
-It’s optimized for academic reproducibility and built to support experimentation for researchers and students aiming for real-world impact — ideal for internships and applied AI research.
+It’s optimized for academic reproducibility and built to support experimentation for researchers and students aiming for real-world impact — ideal for applied AI research.
 
 ---
 
@@ -39,11 +39,11 @@ It’s optimized for academic reproducibility and built to support experimentati
 deepage-regressor/
 ├── config/                 # YAML training configurations
 ├── data/                   # Dataset loading and transformation
-├── models/                 # Model definitions (ResNet, ResNeXt, ViT)
+├── nets/                 # Model definitions (ResNet, ResNeXt, ViT)
 ├── loss/                   # Custom loss functions (Soft-AAR, Weighted MSE)
 ├── trainer/                # Training and validation loop
 ├── eval.py                 # Evaluation and inference
-├── main.py                 # Training entry point
+├── train.py                 # Training entry point
 └── README.md
 ```
 
@@ -150,34 +150,6 @@ loss:
 
 ---
 
-## 🎯 Goals
-
-- ✅ Fast experimentation for academic research
-- ✅ Easy integration of new models and losses
-- ✅ High-quality baseline for facial age regression
-
----
-
-## 📬 Contact
-
-**Elham Soltani Kazemi**  
-📫 [your.email@domain.com]  
-🔗 [LinkedIn](https://linkedin.com/in/your-profile)
-
----
-
-## 📄 License
-
-MIT License. See `LICENSE` for more details.
-
----
-
-<p align="center">
-  Built with 💙 for impactful AI research.
-</p>
-
----
-
 ## 🧪 Synthetic Data for Minor Age Groups
 
 To address data scarcity in younger age brackets, we incorporated **LLM-guided diffusion-based synthetic images** for children (particularly ages 1–5). These samples were generated using Stable Diffusion conditioned on LLM-generated prompts for realistic age-specific variation.
@@ -201,4 +173,34 @@ This demonstrates the **value of synthetic data generation** for age ranges unde
 
 ---
 
+
+---
+
+## 🎯 Goals
+
+- ✅ Fast experimentation for academic research
+- ✅ Easy integration of new models and losses
+- ✅ High-quality baseline for facial age regression
+
+---
+
+## 📬 Contact
+
+**Elham Soltani Kazemi**
+📫 [your.email@domain.com]
+🔗 [LinkedIn](https://linkedin.com/in/your-profile)
+
+---
+
+## 📄 License
+
+MIT License. See `LICENSE` for more details.
+
+---
+
+<p align="center">
+  Built with 💙 for impactful AI research.
+</p>
+
+---
 
