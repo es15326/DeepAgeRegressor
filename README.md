@@ -165,14 +165,6 @@ loss:
 
 ---
 
-## 💬 Contact
-
-**Elham Soltani Kazemi**  
-📧 [your.email@domain.com]  
-🔗 [LinkedIn](https://linkedin.com/in/your-profile)
-
----
-
 ## 📄 License
 
 Released under the MIT License. See `LICENSE` for details.
